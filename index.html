@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Nada</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Playfair Display', serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .card {
+      max-width: 350px;
+      padding: 30px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.8;
+      opacity: 0.9;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 20px;
+      background: #ffffff;
+      color: #2c5364;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 18px;
+      animation: float 6s linear infinite;
+      opacity: 0.4;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh);
+      }
+      100% {
+        transform: translateY(-10vh);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="page1">
+    <h1>Hi Nada ✨</h1>
+    <p>
+      في ناس بتعدي في حياتنا عادي  
+      وناس تسيب أثر من غير ما تحاول  
+    </p>
+    <button onclick="nextPage()">كمّلي</button>
+  </div>
+
+  <div class="card hidden" id="page2">
+    <p>
+      يمكن مش بعرف أعبّر دايمًا  
+      بس وجودك في حد ذاته حاجة لطيفة  
+      وحقيقية  
+    </p>
+    <button onclick="nextPage()">لسه في حاجة</button>
+  </div>
+
+  <div class="card hidden" id="page3">
+    <h1>🎉 Happy 20 🎉</h1>
+    <p>
+      كل سنة وانتي طيبة  
+      أتمنى سنك الجديد يكون أخف  
+      وأهدى  
+      وفيه حاجات حلوة أكتر  
+      زيك كده  
+    </p>
+    <p style="margin-top:15px; opacity:0.7;">
+      — 1 / 1
+    </p>
+  </div>
+
+  <script>
+    let current = 1;
+
+    function nextPage() {
+      document.getElementById(`page${current}`).classList.add('hidden');
+      current++;
+      document.getElementById(`page${current}`).classList.remove('hidden');
+    }
+
+    // floating hearts
+    for (let i = 0; i < 15; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
